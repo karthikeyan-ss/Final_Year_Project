@@ -1,0 +1,70 @@
+/* ui/src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme variables (matching friend's gradients/colors) */
+:root {
+  --bg-start: #eff6ff; /* blue-50 */
+  --bg-mid: #eef2ff; /* indigo-50 */
+  --bg-end: #fce7f3; /* purple/pink-50 */
+  --card-bg: rgba(255,255,255,0.9);
+  --glass-border: rgba(243,244,246,0.7);
+  --primary-from: #3b82f6; /* blue-500 */
+  --primary-to: #8b5cf6; /* purple-600 */
+  --accent: #06b6d4;
+}
+
+/* Page background */
+body {
+  @apply antialiased;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* small global transition */
+* { transition: all 180ms ease-in-out; }
+
+/* Component layer */
+@layer components {
+  .card-premium {
+    background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.85));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  }
+
+  .btn-primary-premium {
+    @apply inline-flex items-center justify-center gap-3 px-5 py-3 font-semibold rounded-xl text-white;
+    background: linear-gradient(90deg, var(--primary-from), var(--primary-to));
+    box-shadow: 0 12px 30px rgba(88,100,242,0.18);
+  }
+
+  .input-premium {
+    @apply w-full px-5 py-4 rounded-xl border-2 border-gray-200 bg-white/80;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .small-muted { color: #6b7280; }
+}
+
+/* animated blobs */
+@keyframes pulse-soft {
+  0% { transform: scale(1); opacity: 0.28; }
+  50% { transform: scale(1.05); opacity: 0.36; }
+  100% { transform: scale(1); opacity: 0.28; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fade-in 420ms cubic-bezier(.2,.9,.3,1) both;
+}
